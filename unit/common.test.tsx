@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  screen,
-  render,
-  getAllByTestId,
-  getByTestId,
-  getByText,
-  getByRole,
-  queryByText,
-  fireEvent,
-  act,
-} from "@testing-library/react";
+import { render, getByText, getAllByRole } from "@testing-library/react";
 import { Application } from "../../src/client/Application";
 import { ProviderWrapper } from "./render";
 
@@ -18,7 +8,7 @@ describe("Общий функционал", () => {
     const { container } = render(<Application />, {
       wrapper: ProviderWrapper,
     });
-    const linkElements = getAllByTestId(container, "link");
+    const linkElements = getAllByRole(container, "link");
     const textLinks = linkElements.map((el) => [
       el.textContent,
       el.getAttribute("href"),
